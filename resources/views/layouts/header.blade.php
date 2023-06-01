@@ -3550,6 +3550,8 @@
         };
     </script>
     <script type='text/javascript' src='{{ asset('/assets/js/plugins/elementor/assets/js/frontend.min.js') }}'></script>
+    <script type='text/javascript' src='{{ asset('/assets/js/plugins/starto-elementor/assets/js/flickity.pkgd.js') }}' id='flickity-js'></script>
+    @yield('script')
 </body>
 </html>
 
