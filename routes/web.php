@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginUser;
+use App\Http\Controllers\Auth\RegisterUser;
 use App\Http\Controllers\Services\Servies_1;
 use App\Http\Controllers\Services\Servies_2;
 use App\Http\Controllers\Sliders\sliderController;
@@ -28,3 +30,6 @@ Route::get('slider/3',[sliderController::class,'verticalindex'])->name('slider.3
 Route::get('slider/4',[sliderController::class,'veloindex'])->name('slider.4');
 Route::get('slider/5',[sliderController::class,'synchronizedindex'])->name('slider.5');
 Route::get('slider/6',[sliderController::class,'splitindex'])->name('slider.6');
+
+Route::get('login',[LoginUser::class,'index'])->name('login');
+Route::get('register',[RegisterUser::class,'index'])->name('register');
