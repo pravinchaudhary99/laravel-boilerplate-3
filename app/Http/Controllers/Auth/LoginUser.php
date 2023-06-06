@@ -9,6 +9,6 @@ class LoginUser extends Controller
 {
     public function index(Request $request)
     {
-        return view('login');
+        return view('authenticate.login');
     }
 }

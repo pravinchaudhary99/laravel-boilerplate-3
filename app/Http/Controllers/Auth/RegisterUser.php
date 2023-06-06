@@ -9,6 +9,11 @@ class RegisterUser extends Controller
 {
     public function index(Request $request)
     {
-        return view('register');
+        return view('authenticate.register');
+    }
+
+    public function create(Request $request)
+    {
+        dd('request : ',$request->all());
     }
 }
