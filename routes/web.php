@@ -25,3 +25,6 @@ Route::get('/', function () {
 Route::get('login',[LoginUser::class,'index'])->name('login');
 Route::get('register',[RegisterUser::class,'index'])->name('register');
 Route::post('user.register',[RegisterUser::class,'create'])->name('user.register');
+
+Route::get('login/google',[LoginUser::class,'redirectToGoogle']);
+Route::get('login/google/callback', [LoginUser::class,'handleGoogleCallback']);

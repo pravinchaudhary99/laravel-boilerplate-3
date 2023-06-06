@@ -50,27 +50,6 @@
 
 								</div>
 								<!--begin::Heading-->
-								<!--begin::Login options-->
-								<div class="row g-3 mb-9">
-									<!--begin::Col-->
-									<div class="col-md-6">
-										<!--begin::Google link=-->
-										<a href="#" class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
-										<img alt="Logo" src="assets/media/svg/brand-logos/google-icon.svg" class="h-15px me-3" />Sign in with Google</a>
-										<!--end::Google link=-->
-									</div>
-									<!--end::Col-->
-									<!--begin::Col-->
-									<div class="col-md-6">
-										<!--begin::Google link=-->
-										<a href="#" class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
-										<img alt="Logo" src="assets/media/svg/brand-logos/apple-black.svg" class="theme-light-show h-15px me-3" />
-										<img alt="Logo" src="assets/media/svg/brand-logos/apple-black-dark.svg" class="theme-dark-show h-15px me-3" />Sign in with Apple</a>
-										<!--end::Google link=-->
-									</div>
-									<!--end::Col-->
-								</div>
-								<!--end::Login options-->
 
 								<!--begin::Separator-->
 								<div class="separator separator-content my-14">
@@ -78,11 +57,6 @@
 								</div>
 								<!--end::Separator-->
 								<!--begin::Input group=-->
-								@error('name')
-									<span class="invalid-feedback" role="alert">
-										<span>{{ $message }}</span>
-									</span>
-								@enderror
 								<div class="fv-row mb-8">
 									<!--begin::Email-->
 									<input type="text" placeholder="Name" name="name" value="{{ old('name') }}" class="form-control bg-transparent" />
@@ -91,11 +65,6 @@
 								<!--end::Input group-->
 
 								<!--begin::Input group=-->
-								@error('email')
-									<span class="invalid-feedback" role="alert">
-										<span>{{ $message }}</span>
-									</span>
-								@enderror
 								<div class="fv-row mb-8">
 									<!--begin::Email-->
 									<input type="text" placeholder="Email" name="email" value="{{ old('email') }}" autocomplete="off" class="form-control bg-transparent" />
@@ -104,11 +73,6 @@
 								<!--end::Input group=-->
 
 								<!--begin::Input group-->
-								@error('password')
-									<span class="invalid-feedback" role="alert">
-										<span>{{ $message }}</span>
-									</span>
-								@enderror
 								<div class="fv-row mb-8" data-kt-password-meter="true">
 									<!--begin::Wrapper-->
 									<div class="mb-1">
@@ -121,42 +85,19 @@
 											</span>
 										</div>
 										<!--end::Input wrapper-->
-										<!--begin::Meter-->
-										<div class="d-flex align-items-center mb-3" data-kt-password-meter-control="highlight">
-											<div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
-											<div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
-											<div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
-											<div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px"></div>
-										</div>
-										<!--end::Meter-->
 									</div>
 									<!--end::Wrapper-->
-									<!--begin::Hint-->
-									<div class="text-muted">Use 8 or more characters with a mix of letters, numbers & symbols.</div>
-									<!--end::Hint-->
 								</div>
 
 								<!--end::Input group=-->
-								<!--end::Input group=-->
-								@error('confirm_password')
-									<span class="invalid-feedback" role="alert">
-										<span>{{ $message }}</span>
-									</span>
-								@enderror
+								<!--begin::Input group=-->
 								<div class="fv-row mb-8">
 									<!--begin::Repeat Password-->
-									<input placeholder="Repeat Password" name="confirm_password" type="password" autocomplete="off" class="form-control bg-transparent" />
+									<input placeholder="Mobile No" name="mobile_no" type="text" autocomplete="off" class="form-control bg-transparent" />
 									<!--end::Repeat Password-->
 								</div>
 								<!--end::Input group=-->
-								<!--begin::Accept-->
-								<div class="fv-row mb-8">
-									<label class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" name="toc" value="1" />
-										<span class="form-check-label fw-semibold text-gray-700 fs-base ms-1">I Accept the Terms
-									</label>
-								</div>
-								<!--end::Accept-->
+
 								<!--begin::Submit button-->
 								<div class="d-grid mb-10">
 									<button type="submit" class="btn btn-primary">
