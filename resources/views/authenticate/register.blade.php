@@ -93,7 +93,7 @@
 								<!--begin::Input group=-->
 								<div class="fv-row mb-8">
 									<!--begin::Repeat Password-->
-									<input placeholder="Mobile No" name="mobile_no" type="text" autocomplete="off" class="form-control bg-transparent" />
+									<input placeholder="Phone No" name="phone_no" type="text" autocomplete="off" class="form-control bg-transparent" />
 									<!--end::Repeat Password-->
 								</div>
 								<!--end::Input group=-->
