@@ -116,7 +116,7 @@ class InvoicesController extends Controller
         $invoice_id = decrypt($id);
         $invoices = Invoice::with(['product','payment'])->findOrFail($invoice_id);
         $invoiceData = viewInvoicePageDataGenerate($invoices);
-        $invoicePDF = PDF::loadView('invoices.pdf', ['invoiceData'=> $invoiceData]);
+        $invoicePDF = PDF::loadView('invoices.pdf', ['invoiceData'=> $invoiceData])->setOptions(['defaultFont' => 'sans-serif']);
         $invoiceName = $invoiceData['invoice_no'];
         return $invoicePDF->download($invoiceName.'.pdf');
     }
