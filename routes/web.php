@@ -45,6 +45,11 @@ Route::get('user-view',[UserController::class,'index'])->name('user.view');
 
 Route::get('pdf/{id}',[PdfController::class,'pdfGenerator'])->name('pdf.download');
 
-Route::get('invoice-invoice',[InvoicesController::class,'invoice'])->name('invoice.invoice');
-Route::get('invoice-create',[InvoicesController::class,'index'])->name('invoice.index');
+Route::get('invoice-index',[InvoicesController::class,'invoice'])->name('invoice.index');
+Route::get('invoice-create',[InvoicesController::class,'index'])->name('invoice.create');
+Route::get('invoice-view/{id}',[InvoicesController::class,'view'])->name('invoice.view');
 Route::post('invoice-create',[InvoicesController::class,'create'])->name('invoice.create');
+Route::get('ckeckout',[InvoicesController::class,'checkOut'])->name('checkout');
+Route::get('/cancel', [ProductController::class, 'cancel'])->name('checkout.cancel');
+Route::get('/success', [InvoicesController::class, 'success'])->name('checkout.success');
+Route::post('/webhook', [InvoicesController::class, 'webhook'])->name('checkout.webhook');

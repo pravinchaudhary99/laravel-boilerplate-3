@@ -36,7 +36,7 @@
             <!--begin::Actions-->
             <div class="d-flex align-items-center gap-2 gap-lg-3">
                 <!--begin::Primary button-->
-                <a href="#" class="btn btn-sm fw-bold btn-secondary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">Back</a>
+                <a href="{{ route('invoice.index') }}" class="btn btn-sm fw-bold btn-secondary">Back</a>
                 <!--end::Primary button-->
             </div>
             <!--end::Actions-->
@@ -86,7 +86,7 @@
                                     <!--end::Input group-->
                                     <!--begin::Input group-->
                                     <div class="d-flex flex-center flex-equal fw-row text-nowrap order-1 order-xxl-2 me-4" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Enter invoice number">
-                                        <span class="fs-2x fw-bold text-gray-800">Invoice #</span>
+                                        <span class="fs-2x fw-bold text-gray-800">Invoice</span>
                                         <input type="text" class="form-control form-control-flush fw-bold text-muted fs-3 w-125px" id="invoice_number" name="invoice_number" value="" placehoder="..." readonly />
                                     </div>
                                     <!--end::Input group-->
@@ -322,8 +322,7 @@
 @endsection
 @section('script')
     <script>
-        var random_number = new Date().getUTCSeconds() +''+ new Date().getUTCMilliseconds();
-        console.log('random_number',random_number);
+        var random_number = '#INV-'+new Date().getUTCSeconds() +''+ new Date().getUTCMilliseconds();
         $("#invoice_number").val(random_number);
     </script>
     <script src="{{ asset('assets/js/custom/apps/invoices/create.js') }}"></script>
