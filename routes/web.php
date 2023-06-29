@@ -43,13 +43,14 @@ Route::get('user-view',[UserController::class,'index'])->name('user.view');
 //     return true;
 // });
 
-Route::get('pdf/{id}',[PdfController::class,'pdfGenerator'])->name('pdf.download');
+// Route::get('pdf/{id}',[PdfController::class,'pdfGenerator'])->name('pdf.download');
 
 Route::get('invoice-index',[InvoicesController::class,'invoice'])->name('invoice.index');
+Route::get('invoice-pdf/{id}',[InvoicesController::class,'invoicePdf'])->name('invoice.pdf');
 Route::get('invoice-create',[InvoicesController::class,'index'])->name('invoice.create');
 Route::get('invoice-view/{id}',[InvoicesController::class,'view'])->name('invoice.view');
 Route::post('invoice-create',[InvoicesController::class,'create'])->name('invoice.create');
-Route::get('ckeckout',[InvoicesController::class,'checkOut'])->name('checkout');
-Route::get('/cancel', [ProductController::class, 'cancel'])->name('checkout.cancel');
-Route::get('/success', [InvoicesController::class, 'success'])->name('checkout.success');
-Route::post('/webhook', [InvoicesController::class, 'webhook'])->name('checkout.webhook');
+Route::get('payment-create/{id}',[InvoicesController::class,'paymentCreate'])->name('payment.create');
+Route::get('payment-success/{id}', [InvoicesController::class, 'paymentSuccess'])->name('payment.success');
+Route::get('payment-cancel', [InvoicesController::class, 'paymentCancel'])->name('payment.cancel');
+

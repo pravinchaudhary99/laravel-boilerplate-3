@@ -3,14 +3,10 @@
 namespace App\Http\Controllers\Invoice;
 
 use App\Models\Invoice;
-use App\Models\Payment;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
-use Stripe\Checkout\Session;
-use Stripe\Exception\ApiErrorException;
 
 class InvoicesController extends Controller
 {
@@ -75,8 +71,53 @@ class InvoicesController extends Controller
     public function view(Request $request, $id) {
         $invoice_id = decrypt($id);
         $invoices = Invoice::with(['product','payment'])->findOrFail($invoice_id);
-        viewInvoicePageDataGenerate($invoices);
-        return view('invoices.view');
+        $invoiceData = viewInvoicePageDataGenerate($invoices);
+        return view('invoices.view',compact('invoiceData'));
     }
 
+    public function paymentCreate($id) {
+        $invoice_id = decrypt($id);
+        $invoices =Invoice::with(['product','payment'])->findOrFail($invoice_id);
+        $invoiceData = viewInvoicePageDataGenerate($invoices);
+        $line_items = [];
+        foreach ($invoiceData['products'] as $product) {
+            $line_items[] = [
+                'price_data' => [
+                    'currency' => $invoiceData['currency'] ?? 'INR',
+                    'product_data' => [
+                        'name' => $product['product_name'],
+                    ],
+                    'unit_amount' =>(($product['product_total_price'] ?? 0) * 100) / $product['produte_qty'],
+                ],
+                'quantity' => $product['produte_qty'],
+            ];
+        }
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+        $checkout_session = $stripe->checkout->sessions->create([
+            'line_items' => $line_items,
+            'mode' => 'payment',
+            'invoice_creation' => ['enabled' => true],
+            'success_url' => route('payment.success',$id),
+            'cancel_url' => route('payment.cancel'),
+        ]);
+        return redirect($checkout_session->url);
+    }
+
+    public function paymentSuccess($id) {
+        return response()->json('payment successfully');
+    }
+
+    public function paymentCancel()  {
+        return response()->json('payment cancel');
+    }
+
+
+    public function invoicePdf($id) {
+        $invoice_id = decrypt($id);
+        $invoices = Invoice::with(['product','payment'])->findOrFail($invoice_id);
+        $invoiceData = viewInvoicePageDataGenerate($invoices);
+        $invoicePDF = PDF::loadView('invoices.pdf', ['invoiceData'=> $invoiceData]);
+        $invoiceName = $invoiceData['invoice_no'];
+        return $invoicePDF->download($invoiceName.'.pdf');
+    }
 }

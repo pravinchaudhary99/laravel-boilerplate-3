@@ -161,7 +161,7 @@
                                                     <!--end::Menu item-->
                                                     <!--begin::Menu item-->
                                                     <div class="menu-item px-3">
-                                                        <a href="{{ route('pdf.download', encrypt($invoice->id)) }}"
+                                                        <a href="{{ route('invoice.pdf', encrypt($invoice->id)) }}"
                                                             class="menu-link px-3">PDF</a>
                                                     </div>
                                                     <!--end::Menu item-->
